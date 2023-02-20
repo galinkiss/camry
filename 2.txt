@@ -1,0 +1,10 @@
+<body>
+<script>
+str=prompt("BBOD a:","0")
+x=parseInt(str)
+str=prompt("BBOD b:","0")
+y=parseInt(str)
+if (y%2==0 || x%2==0) alert("Da")
+else alert("Het")
+</script>
+</body>
