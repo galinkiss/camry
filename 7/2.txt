@@ -1,0 +1,27 @@
+<html>
+<head>
+<script>
+function showMore() {
+  var moreText = document.getElementById("more-text");
+  moreText.style.display = "block";
+  var moreLink = document.getElementById("more-link");
+  moreLink.style.display = "none";
+}
+
+function hideMore() {
+  var moreText = document.getElementById("more-text");
+  moreText.style.display = "none";
+  var moreLink = document.getElementById("more-link");
+  moreLink.style.display = "inline";
+}
+
+</script>
+</head>
+<body>
+<p>Текст на странице. <a href="#" id="more-link" onclick="showMore()">Подробнее</a></p>
+<div id="more-text" style="display:none;">
+  <p>Дополнительный текст, который появляется при нажатии на ссылку "Подробнее".</p>
+  <p><a href="#" onclick="hideMore()">Свернуть</a></p>
+</div>
+</body>
+</html>

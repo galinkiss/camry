@@ -6,7 +6,7 @@ str=prompt("BBOD m:","0")
 y=parseInt(str)
 str=prompt("BBOD sm:","0")
 sm=parseInt(str)
-km=x*1000000
+km=x*100000
 m=y*100
 sum=km+m+sm
 alert('Всего см: '+sum)

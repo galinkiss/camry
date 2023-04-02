@@ -1,0 +1,20 @@
+<head>
+<script>
+function poisk()
+{
+mas=new Array(3,5,1,7,8,10,15,1)
+n=mas.length
+min=999999
+t=-1
+for(i=n; i>=0; i--)
+{
+if (mas[i]%2==1 && mas[i]<min){ t=i;min=mas[i];}
+}
+if (t>=0) alert(mas[t]+' '+t)
+else alert("Нет нечётных")
+}
+</script>
+</head>
+<body>
+<input type="button" value="Найти" onclick="poisk()"
+</body>

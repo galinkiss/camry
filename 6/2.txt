@@ -1,0 +1,19 @@
+<html>
+<head>
+<style type="text/css">
+body {background-color:PaleGreen;}
+input {font-weight:bold;}
+</style>
+<script>
+function Poisk() {
+  win=window.open("1.html","www","width=200,height=200");
+}
+</script>
+</head>
+<body bgcolor="#655df0">
+<form>
+<input type="button" value="Start" onclick="Poisk()">
+<input type="button" value="Close" onclick="win.close()">
+</form>
+</body>
+</html>

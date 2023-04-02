@@ -1,0 +1,49 @@
+<html>
+<head>
+<style type="text/css">
+td {width:150px; height:150px;}
+</style>
+<script>
+function swapImages(img1, img2) {
+  var temp = img1.src;
+  img1.src = img2.src;
+  img2.src = temp;
+}
+
+function resetImages() {
+  var images = document.getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++) {
+    // возвращаем оригинальное значение src из атрибута data-original
+    images[i].src = images[i].getAttribute("data-original");
+  }
+}
+
+function hoverImage(img) {
+  var images = document.getElementsByTagName("img");
+  
+  // проверяем, на какую картинку навели и меняем местами нужные картинки
+  if (images[2] == img) {
+     swapImages(images[0], images[1]);
+  } else if (images[1] == img) {
+     swapImages(images[0], images[2]);
+  } else {
+     swapImages(images[1], images[2]);
+  }
+}
+
+function unhoverImage() {
+  resetImages();
+}
+
+</script>
+</head>
+<body>
+<table>
+<tr>
+<td><img src="image1.jpg" data-original="image1.jpg" onmouseover="hoverImage(this)" onmouseout="unhoverImage()"></td>
+<td><img src="image2.jpg" data-original="image2.jpg" onmouseover="hoverImage(this)" onmouseout="unhoverImage()"></td>
+<td><img src="image3.jpg" data-original="image3.jpg" onmouseover="hoverImage(this)" onmouseout="unhoverImage()"></td>
+</tr>
+</table>
+</body>
+</html>

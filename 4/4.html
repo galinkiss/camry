@@ -1,0 +1,26 @@
+<html>
+<body>
+<script>
+title=prompt(' ');L=title.length
+
+index = title.lastIndexOf( ' ' );
+
+function vvod()
+{
+wrd=prompt(' '); W=wrd.length
+if (W==1) return(wrd);
+else alert(W); vvod();
+}
+str=title.substr(0,index)
+str1=title.substr(index+1)
+S=str1.length
+wrd=vvod()
+for (i=0; i<S; i++)
+{ 
+str1=str1.replace(str1[i], wrd)
+}
+alert(str+' '+str1)
+</script>
+</body>
+</html>
+	
