@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>null</title>
+  <script>
+    function styl() {
+      t = document.getElementById("inputName")
+      tmpT = parseInt(t.value) + 1
+      t.value = tmpT
+    }
+    function styl1() {
+      t = document.getElementById("inputName")
+      tmpT = parseInt(t.value)-1
+      if (tmpT >= 0){
+        t.value = tmpT
+      } 
+    }
+  </script>
+</head>
+<body>
+  <input id="inputName"></input>
+  <button id="1" onclick="styl()">+1</button>
+  <button id="2" onclick="styl1()">-1</button>
+</body>
+</html>
