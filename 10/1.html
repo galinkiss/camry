@@ -1,0 +1,172 @@
+<html>
+<head>
+<style>
+body {
+background-image: url(1bg.jpg);
+background-size: cover;
+background-position: center;
+}
+
+#slider {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 500px;
+height: 450px;
+border: 1px solid black;
+overflow: hidden;
+margin: 0 auto;
+position: relative;
+}
+
+#slider img {
+position: absolute;
+opacity: 0;
+transition: opacity .5s ease-in-out, transform .5s ease-in-out;
+object-fit: cover;
+width: 100%;
+height: 100%;
+}
+
+#slider img.active {
+opacity: 1;
+}
+
+#slider:hover img {
+transform: scale(1.2);
+}
+
+#bio {
+margin: 50px auto;
+width: 600px;
+height: 200px;
+background-color: #EEE;
+height: 30%;
+width: 50%; 
+padding: 20px;
+text-align: justify;
+font-size: 24px;
+position: relative;
+}
+
+#bio:hover {
+transform: scale(1.2);
+z-index: 1;
+color: red;
+}
+
+#footer {
+text-align: center;
+margin-top: 50px;
+background-color: #EEE;
+padding: 15px;
+font-size: 16px;
+position: relative;
+}
+
+#slider-buttons {
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 10px;
+}
+
+#slider-buttons button {
+background-color: white;
+border: 1px solid black;
+margin: 0 10px;
+cursor: pointer;
+}
+
+#slider-buttons button.active {
+background-color: black;
+color: white;
+}
+</style>
+</head>
+<body>
+<div id="slider">
+<img src="1.jpg" class="active">
+<img src="2.jpg">
+<img src="3.jpg">
+</div>
+<div id="slider-buttons">
+<button class="active"></button>
+<button></button>
+<button></button>
+</div>
+<div id="bio">
+<p>Меня зовут <strong>Галя</strong>, мне 19 лет и я студентка 2 курса. Я занимаюсь танцами уже 8 лет. За это время было проделанно много работы, поставленно танцев. </p> 
+<p>За это время я учавствовала во многих выступлениях, не только в родном городе, но и в других. Мой родной город - Липецк, но я сейчас я переехала в Воронеж, чтобы учиться и получить высшее образование.</p>
+</div>
+<footer id="footer">
+дата рождения: 25.12.2003
+</footer>
+<script>
+const slider = document.querySelector('#slider');
+const images = document.querySelectorAll('#slider img');
+const buttons = document.querySelectorAll('#slider-buttons button');
+let currentSlide = 0;
+
+function nextSlide() {
+images[currentSlide].classList.remove('active');
+buttons[currentSlide].classList.remove('active');
+currentSlide = (currentSlide + 1) % images.length;
+images[currentSlide].classList.add('active');
+buttons[currentSlide].classList.add('active');
+}
+buttons.forEach((button, index) => {
+button.addEventListener('click', () => {
+images[currentSlide].classList.remove('active');
+buttons[currentSlide].classList.remove('active');
+currentSlide = index;
+images[currentSlide].classList.add('active');
+buttons[currentSlide].classList.add('active');
+});
+});
+const bio = document.querySelector('#bio');
+let fontSize = 18;
+
+bio.style.fontSize = fontSize + 'px';
+
+bio.addEventListener('mouseover', () => {
+bio.style.transform = 'scale(1.2)';
+bio.style.zIndex = 1;
+bio.style.color = 'indigo';
+
+});
+
+bio.addEventListener('mouseout', () => {
+bio.style.transform = 'scale(1)';
+bio.style.zIndex = 0;
+bio.style.color = 'black';
+});
+document.addEventListener('keydown', (event) => {
+if (event.key === '=') {
+fontSize += 2;
+bio.style.fontSize = fontSize + 'px';
+} else if (event.key === '-') {
+fontSize -= 2;
+bio.style.fontSize = fontSize + 'px';
+} else if (event.key === 'н') {
+const date = document.querySelector('#footer');
+if (date.style.textTransform === 'uppercase') { // проверяем текущий стиль текста
+date.style.textTransform = 'lowercase'; // меняем на строчный
+const birthday = new Date(2003, 11, 24);
+const now = new Date();
+const nextBirthday = new Date(now.getFullYear(), birthday.getMonth(), birthday.getDate());
+if (now.getTime() > nextBirthday.getTime()) { // если ДР уже прошел в этом году, сдвигаем на следующий год
+nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+}
+const daysLeft = Math.ceil((nextBirthday.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)); // считаем количество дней до следующего ДР
+date.textContent = 'Дата рождения: 25.12.2003' + ', до следующего дня рождения осталось ' + daysLeft + ' дней';
+} else {
+date.style.textTransform = 'uppercase'; // меняем на заглавный
+date.textContent = 'ДАТА РОЖДЕНИЯ: 25.12.2003';
+// возвращаем исходный текст
+}
+}
+});
+</script>
+</body>
+</html>
